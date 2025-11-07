@@ -1,15 +1,21 @@
-# Enterprise Web Application Development Skills
+# Catalyst ⚡
 
-A comprehensive suite of Claude skills designed for enterprise web application development using parallel agent workflows. These skills work together to research, plan, build, and integrate complex applications across any technology stack.
+**Build enterprise web apps 10x faster.** A catalyst for rapid full-stack development using parallel agent workflows.
 
-## Overview
+## What is Catalyst?
 
-This suite consists of 4 interconnected skills that transform the development process:
+Catalyst is a comprehensive Claude Code plugin that transforms how you build web applications. Instead of building sequentially, Catalyst orchestrates **parallel agents** that research, plan, and build simultaneously - dramatically accelerating development from idea to working application.
 
-1. **enterprise-app-researcher** - Parallel research agents explore tech stack options
-2. **enterprise-app-planner** - Creates detailed, parallelizable implementation plans
-3. **parallel-deployer** - Orchestrates multiple agents building components simultaneously
-4. **component-integrator** - Integrates components into a working application
+## The Catalyst Workflow
+
+Four powerful skills that work together seamlessly:
+
+1. **🔍 Research** (`enterprise-app-researcher`) - Launch parallel agents to explore tech stack options
+2. **📋 Plan** (`enterprise-app-planner`) - Generate detailed, parallelizable implementation plans
+3. **⚡ Deploy** (`parallel-deployer`) - Build multiple components simultaneously with parallel agents
+4. **🔗 Integrate** (`component-integrator`) - Connect everything into a working application
+
+**The Result:** Hours instead of days. A working full-stack application from idea to reality.
 
 ## Skills Included
 
@@ -198,16 +204,76 @@ Once plans are approved, agents work independently with minimal supervision.
 
 ## Installation
 
-These skills are already packaged and ready to use:
+### Quick Install (Recommended)
 
-```
-component-integrator.zip
-enterprise-app-planner.zip
-enterprise-app-researcher.zip
-parallel-deployer.zip
+One command to install Catalyst:
+
+```bash
+# In Claude Code (VS Code):
+/plugin install Christopher-R-Williams/skills
 ```
 
-To install, add them to your Claude skills library.
+That's it! Catalyst is now active and ready to accelerate your development. ⚡
+
+### Alternative Installation Methods
+
+**Via Marketplace:**
+
+```bash
+/plugin marketplace add Christopher-R-Williams/skills
+/plugin install catalyst
+```
+
+**Clone for Local Development:**
+
+```bash
+git clone https://github.com/Christopher-R-Williams/skills.git
+/plugin add /path/to/skills
+```
+
+**VS Code Settings:**
+
+Add to your `settings.json`:
+
+```json
+{
+  "claude.plugins": [
+    "Christopher-R-Williams/skills"
+  ]
+}
+```
+
+### Getting Started
+
+After installation, **Catalyst automatically activates** when you start a new Claude Code session. You'll see a welcome message with:
+
+- Quick overview of the Catalyst workflow
+- Example prompts to get started immediately
+- Tips for using each phase of the workflow
+
+**Just tell Claude what you want to build** and the Catalyst workflow begins automatically!
+
+Examples:
+- "I want to build a task management app with React and Node.js"
+- "Help me create an e-commerce platform"
+- "Build a customer portal with authentication"
+
+### Verification
+
+Verify Catalyst is installed:
+
+```bash
+/plugin list        # Should show "catalyst"
+/skills list        # Should show all 4 Catalyst skills
+```
+
+### Updating
+
+Get the latest features:
+
+```bash
+/plugin update catalyst
+```
 
 ## Usage Tips
 

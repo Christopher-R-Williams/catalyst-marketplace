@@ -1,0 +1,31 @@
+{
+  "name": "catalyst-marketplace",
+  "owner": {
+    "name": "Christopher Williams",
+    "email": "christopher.r.williams@outlook.com",
+    "url": "https://github.com/Christopher-R-Williams"
+  },
+  "description": "Catalyst - Build enterprise web apps 10x faster with parallel agent workflows",
+  "plugins": [
+    {
+      "name": "catalyst",
+      "source": ".",
+      "version": "1.0.0",
+      "description": "A catalyst for rapid full-stack development. Research, plan, deploy in parallel, and integrate - all automated with parallel agents.",
+      "author": "Christopher Williams",
+      "skills": [
+        "enterprise-app-researcher",
+        "enterprise-app-planner",
+        "parallel-deployer",
+        "component-integrator"
+      ],
+      "keywords": [
+        "catalyst",
+        "rapid-development",
+        "parallel-agents",
+        "fullstack",
+        "automation"
+      ]
+    }
+  ]
+}

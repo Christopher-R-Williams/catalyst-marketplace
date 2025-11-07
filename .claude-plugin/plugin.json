@@ -1,0 +1,23 @@
+{
+  "name": "catalyst",
+  "version": "1.0.0",
+  "description": "Catalyst - A catalyst for rapid full-stack development. Build enterprise web apps 10x faster with parallel agent workflows: research, plan, deploy in parallel, and integrate.",
+  "author": "Christopher Williams",
+  "homepage": "https://github.com/Christopher-R-Williams/skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Christopher-R-Williams/skills.git"
+  },
+  "keywords": [
+    "catalyst",
+    "rapid-development",
+    "parallel-agents",
+    "fullstack",
+    "web-development",
+    "react",
+    "nodejs",
+    "enterprise",
+    "workflow",
+    "automation"
+  ]
+}

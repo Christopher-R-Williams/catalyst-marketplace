@@ -1,13 +1,42 @@
-# GitHub Repository Setup Guide
+# Catalyst - Plugin Marketplace Setup Guide
 
-This guide will help you push the skills repository to GitHub and enable automated Claude Code PR reviews.
+This guide will help you publish **Catalyst** as a Claude Code plugin marketplace on GitHub.
+
+## Overview
+
+**Catalyst** is configured as a **Claude Code plugin marketplace**, providing seamless installation for users:
+
+**For Users:**
+- ✅ One-command installation: `/plugin install catalyst`
+- ✅ Automatic welcome message via start-session hook
+- ✅ All 4 skills in one plugin package
+- ✅ Automatic updates via `/plugin update`
+- ✅ No manual configuration needed
+
+**For Developers:**
+- ✅ Version control for skill development
+- ✅ Accept contributions via pull requests
+- ✅ Track issues and feature requests
+- ✅ Automated PR reviews with Claude (optional)
+- ✅ Plugin versioning and release management
+
+**Plugin Structure:**
+- `.claude-plugin/plugin.json` - Plugin manifest (named "catalyst")
+- `.claude-plugin/marketplace.json` - Marketplace configuration
+- `hooks/start-session.md` - Welcome message when users start a session
+- `enterprise-app-researcher/` - Research skill
+- `enterprise-app-planner/` - Planning skill
+- `parallel-deployer/` - Parallel deployment skill
+- `component-integrator/` - Integration skill
+
+Each skill directory contains a `SKILL.md` file that Claude Code automatically discovers.
 
 ## Step 1: Create GitHub Repository
 
 1. Go to https://github.com/new
-2. Repository name: `enterprise-web-app-skills` (or your preferred name)
-3. Description: "Claude skills for enterprise web application development with parallel agent workflows"
-4. Visibility: Public or Private (your choice)
+2. Repository name: `skills` (or `catalyst-skills`)
+3. Description: "Catalyst - Build enterprise web apps 10x faster with parallel agent workflows"
+4. Visibility: **Public** (recommended for easy installation) or Private
 5. **DO NOT** initialize with README, .gitignore, or license (we already have these)
 6. Click "Create repository"
 
@@ -28,10 +57,10 @@ For the automated Claude PR review to work, you need to add your Anthropic API k
 Run these commands in your terminal:
 
 ```bash
-cd "C:\Users\Christopher Williams\.claude\skills"
+cd "C:\Users\Christopher Williams\DevWorkspace\claude-skills\skills"
 
-# Add remote (replace YOUR_USERNAME with your GitHub username)
-git remote add origin https://github.com/YOUR_USERNAME/enterprise-web-app-skills.git
+# Add remote
+git remote add origin https://github.com/Christopher-R-Williams/skills.git
 
 # Check status
 git status
@@ -56,12 +85,108 @@ git push -u origin main
 
 1. Go to your GitHub repository
 2. You should see all the files
-3. Go to "Actions" tab
-4. You should see the "Claude Code PR Review" workflow listed
+3. Go to "Actions" tab (if you set up PR reviews)
+4. Repository is now ready for distribution
 
-## Step 5: Test the PR Review Workflow
+## Step 5: Share Installation Instructions
 
-Create a test PR to verify Claude reviews work:
+Users can now install your plugin in Claude Code (VS Code). Share these simple instructions:
+
+### Recommended: Plugin Marketplace Installation
+
+The easiest method for users:
+
+```bash
+# In Claude Code (VS Code):
+/plugin marketplace add Christopher-R-Williams/skills
+/plugin install catalyst
+```
+
+### Alternative: Direct Plugin Installation
+
+Install without adding marketplace first:
+
+```bash
+# In Claude Code (VS Code):
+/plugin install Christopher-R-Williams/skills
+```
+
+**After installation**, Catalyst automatically greets users with the start-session hook, explaining the workflow and how to get started.
+
+### For Developers: Clone for Contribution
+
+Contributors can clone for local development:
+
+```bash
+# Clone the repository
+git clone https://github.com/Christopher-R-Williams/skills.git
+
+# Add as local plugin in Claude Code
+/plugin add /path/to/skills
+```
+
+### Verification
+
+Users can verify installation:
+
+```bash
+# List all installed plugins
+/plugin list
+
+# List all available skills
+/skills list
+```
+
+They should see all 4 skills:
+- `enterprise-app-researcher`
+- `enterprise-app-planner`
+- `parallel-deployer`
+- `component-integrator`
+
+## Publishing Updates
+
+When you make improvements to skills:
+
+1. **Make Changes**
+   - Edit skill files locally
+   - Test thoroughly in Claude Code
+
+2. **Update Version** (in `.claude-plugin/plugin.json`)
+   ```json
+   {
+     "version": "1.1.0"  // Increment version
+   }
+   ```
+
+3. **Commit and Push**
+   ```bash
+   git add .
+   git commit -m "feat: describe your improvement"
+   git push origin main
+   ```
+
+4. **Create GitHub Release** (Optional but recommended)
+   - Go to GitHub repository → Releases → Draft new release
+   - Tag: `v1.1.0` (matching plugin.json version)
+   - Title: Release version number
+   - Description: Changelog of improvements
+
+5. **Users Update Automatically**
+   ```bash
+   # Users can update with one command:
+   /plugin update catalyst
+   ```
+
+### Version Numbering
+
+Follow semantic versioning (semver):
+- **Major** (1.0.0 → 2.0.0): Breaking changes
+- **Minor** (1.0.0 → 1.1.0): New features, backward compatible
+- **Patch** (1.0.0 → 1.0.1): Bug fixes
+
+## Step 6: Test the PR Review Workflow (Optional)
+
+If you set up automated PR reviews, create a test PR to verify Claude reviews work:
 
 ```bash
 # Create a test branch
