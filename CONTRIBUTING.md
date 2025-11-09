@@ -1,21 +1,21 @@
-# Contributing to Enterprise Web App Development Skills
+# Contributing to Catalyst
 
-Thank you for your interest in contributing to these Claude skills! This guide will help you understand the contribution process.
+Thank you for your interest in contributing to **Catalyst**! This guide will help you understand the contribution process.
 
 ## Overview
 
-This repository contains four interconnected Claude skills for enterprise web application development:
-- `enterprise-app-researcher` - Parallel research agents
-- `enterprise-app-planner` - Implementation planning
-- `parallel-deployer` - Parallel development orchestration
-- `component-integrator` - Component integration
+This repository contains the **Catalyst** plugin with four interconnected Claude skills for rapid full-stack development:
+- `ignite` 🔥 - Research & Discovery
+- `architect` 🏗️ - Plan & Design
+- `deploy` ⚡ - Build in Parallel
+- `ship` 🚀 - Integrate & Launch
 
 ## Development Workflow
 
 ### 1. Fork and Clone
 ```bash
-git clone https://github.com/[your-username]/enterprise-web-app-skills.git
-cd enterprise-web-app-skills
+git clone https://github.com/[your-username]/catalyst-marketplace.git
+cd catalyst-marketplace
 ```
 
 ### 2. Create a Feature Branch
@@ -63,9 +63,9 @@ python ~/.claude/plugins/marketplaces/anthropic-agent-skills/skill-creator/scrip
 Follow conventional commit format:
 ```bash
 git add .
-git commit -m "feat: add template assets to planner skill"
+git commit -m "feat: add template assets to architect skill"
 # or
-git commit -m "fix: correct API contract example in deployer"
+git commit -m "fix: correct API contract example in deploy"
 # or
 git commit -m "docs: improve integration troubleshooting guide"
 ```
@@ -97,7 +97,7 @@ git push origin feature/your-feature-name
 [type]: Brief description
 
 Examples:
-feat: Add Docker templates to component-integrator
+feat: Add Docker templates to ship skill
 fix: Correct CORS configuration in integration guide
 docs: Update workflow diagram with new skill
 ```
@@ -217,7 +217,7 @@ Additional considerations
 - Make descriptions keyword-rich for automatic activation
 - Include common user phrases
 - Specify when to auto-activate vs wait for explicit request
-- Chain skills together (researcher → planner → deployer → integrator)
+- Chain skills together (ignite → architect → deploy → ship)
 
 ## What to Contribute
 

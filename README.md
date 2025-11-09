@@ -300,7 +300,7 @@ These skills are designed to work together. Using them in sequence maximizes ben
 
 ### Adding a Major Feature
 1. Research approaches → Plan feature → Deploy in parallel → Integrate with existing code
-2. Use parallel-deployer to build new feature modules simultaneously
+2. Use **deploy** to build new feature modules simultaneously
 
 ### Refactoring or Modernizing
 1. Research modern alternatives → Plan migration → Deploy new architecture in parallel → Integrate gradually
@@ -313,14 +313,14 @@ These skills are designed to work together. Using them in sequence maximizes ben
 ## Advanced Patterns
 
 ### Microservices Development
-Use parallel-deployer to build each microservice simultaneously:
+Use **deploy** to build each microservice simultaneously:
 - 1 agent per service
 - 1 agent for API gateway
 - 1 agent for shared infrastructure
 - Deploy 10+ services in parallel
 
 ### Full-Stack Monorepo
-Use parallel-deployer with organized workspace:
+Use **deploy** with organized workspace:
 - Frontend agent → /frontend
 - Backend agent → /backend
 - Database agent → /database
@@ -342,7 +342,7 @@ Make sure Claude launches all agents in a SINGLE message with multiple Task tool
 Check that all agents followed the API contracts defined in the plan. Most issues are contract violations.
 
 ### "Integration failing with CORS errors"
-The component-integrator should handle this, but verify CORS is configured for your frontend origin.
+The **ship** skill should handle this, but verify CORS is configured for your frontend origin.
 
 ### "Database connection issues"
 Verify connection strings in .env file match your database configuration.
@@ -395,4 +395,4 @@ Ready to build something?
  Help me research the best tech stack options."
 ```
 
-Claude will activate the enterprise-app-researcher skill and start the parallel development journey!
+Claude will activate the **Ignite** skill and start the Catalyst workflow - your parallel development journey! 🔥
