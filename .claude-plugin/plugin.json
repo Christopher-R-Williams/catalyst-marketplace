@@ -1,8 +1,12 @@
 {
   "name": "catalyst",
+  "displayName": "Catalyst",
   "version": "1.0.0",
-  "description": "Catalyst - A catalyst for rapid full-stack development. Build enterprise web apps 10x faster with parallel agent workflows: research, plan, deploy in parallel, and integrate.",
-  "author": "Christopher Williams",
+  "description": "Build enterprise web apps 10x faster with parallel agent workflows: Ignite → Architect → Deploy → Ship",
+  "author": {
+    "name": "Christopher Williams",
+    "url": "https://github.com/Christopher-R-Williams"
+  },
   "homepage": "https://github.com/Christopher-R-Williams/catalyst-marketplace",
   "repository": {
     "type": "git",
@@ -19,5 +23,7 @@
     "enterprise",
     "workflow",
     "automation"
-  ]
+  ],
+  "skills": ["./ignite", "./architect", "./deploy", "./ship"],
+  "hooks": ["./hooks"]
 }
