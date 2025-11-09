@@ -210,7 +210,7 @@ One command to install Catalyst:
 
 ```bash
 # In Claude Code (VS Code):
-/plugin install Christopher-R-Williams/skills
+/plugin install Christopher-R-Williams/catalyst-marketplace
 ```
 
 That's it! Catalyst is now active and ready to accelerate your development. ⚡
@@ -220,15 +220,15 @@ That's it! Catalyst is now active and ready to accelerate your development. ⚡
 **Via Marketplace:**
 
 ```bash
-/plugin marketplace add Christopher-R-Williams/skills
+/plugin marketplace add Christopher-R-Williams/catalyst-marketplace
 /plugin install catalyst
 ```
 
 **Clone for Local Development:**
 
 ```bash
-git clone https://github.com/Christopher-R-Williams/skills.git
-/plugin add /path/to/skills
+git clone https://github.com/Christopher-R-Williams/catalyst-marketplace.git
+/plugin add /path/to/catalyst-marketplace
 ```
 
 **VS Code Settings:**
@@ -238,7 +238,7 @@ Add to your `settings.json`:
 ```json
 {
   "claude.plugins": [
-    "Christopher-R-Williams/skills"
+    "Christopher-R-Williams/catalyst-marketplace"
   ]
 }
 ```

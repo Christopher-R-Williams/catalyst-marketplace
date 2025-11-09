@@ -34,7 +34,7 @@ Each skill directory contains a `SKILL.md` file that Claude Code automatically d
 ## Step 1: Create GitHub Repository
 
 1. Go to https://github.com/new
-2. Repository name: `skills` (or `catalyst-skills`)
+2. Repository name: `catalyst-marketplace`
 3. Description: "Catalyst - Build enterprise web apps 10x faster with parallel agent workflows"
 4. Visibility: **Public** (recommended for easy installation) or Private
 5. **DO NOT** initialize with README, .gitignore, or license (we already have these)
@@ -60,7 +60,7 @@ Run these commands in your terminal:
 cd "C:\Users\Christopher Williams\DevWorkspace\claude-skills\skills"
 
 # Add remote
-git remote add origin https://github.com/Christopher-R-Williams/skills.git
+git remote add origin https://github.com/Christopher-R-Williams/catalyst-marketplace.git
 
 # Check status
 git status
@@ -98,7 +98,7 @@ The easiest method for users:
 
 ```bash
 # In Claude Code (VS Code):
-/plugin marketplace add Christopher-R-Williams/skills
+/plugin marketplace add Christopher-R-Williams/catalyst-marketplace
 /plugin install catalyst
 ```
 
@@ -108,7 +108,7 @@ Install without adding marketplace first:
 
 ```bash
 # In Claude Code (VS Code):
-/plugin install Christopher-R-Williams/skills
+/plugin install Christopher-R-Williams/catalyst-marketplace
 ```
 
 **After installation**, Catalyst automatically greets users with the start-session hook, explaining the workflow and how to get started.
@@ -119,10 +119,10 @@ Contributors can clone for local development:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Christopher-R-Williams/skills.git
+git clone https://github.com/Christopher-R-Williams/catalyst-marketplace.git
 
 # Add as local plugin in Claude Code
-/plugin add /path/to/skills
+/plugin add /path/to/catalyst-marketplace
 ```
 
 ### Verification
