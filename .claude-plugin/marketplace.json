@@ -9,15 +9,18 @@
   "plugins": [
     {
       "name": "catalyst",
-      "source": ".",
+      "source": "./",
       "version": "1.0.0",
       "description": "A catalyst for rapid full-stack development. Research, plan, deploy in parallel, and integrate - all automated with parallel agents.",
-      "author": "Christopher Williams",
+      "author": {
+        "name": "Christopher Williams",
+        "url": "https://github.com/Christopher-R-Williams"
+      },
       "skills": [
-        "ignite",
-        "architect",
-        "deploy",
-        "ship"
+        "./ignite",
+        "./architect",
+        "./deploy",
+        "./ship"
       ],
       "keywords": [
         "catalyst",
