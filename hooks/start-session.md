@@ -6,10 +6,10 @@ Welcome! **Catalyst** is active - your catalyst for rapid full-stack development
 
 Build enterprise web apps **10x faster** with parallel agent workflows:
 
-1. **Research** → Explore tech stack options in parallel
-2. **Plan** → Create detailed, parallelizable implementation plans
-3. **Deploy** → Build components simultaneously with parallel agents
-4. **Integrate** → Connect everything into a working application
+1. **🔥 Ignite** → Explore tech stack options in parallel
+2. **🏗️ Architect** → Create detailed, parallelizable implementation plans
+3. **⚡ Deploy** → Build components simultaneously with parallel agents
+4. **🚀 Ship** → Integrate everything and launch your app
 
 ## Quick Start
 

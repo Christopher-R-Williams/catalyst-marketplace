@@ -1,9 +1,9 @@
 ---
-name: enterprise-app-researcher
+name: ignite
 description: PROACTIVELY use this skill when users mention building, creating, or developing any web application, API, dashboard, portal, platform, or service. Automatically activate when users ask about tech stacks, frameworks, or how to build something. This skill launches parallel research agents to explore options across any stack. Trigger on keywords like "build", "create", "develop", "app", "website", "API", "backend", "frontend", "database", "what should I use", "best way to", "options for", or any technology-related questions about web development.
 ---
 
-# Enterprise Application Researcher
+# Ignite - Research & Discovery
 
 This skill orchestrates parallel research agents to explore and analyze technology options, architecture patterns, and best practices for enterprise web application development. It is completely stack-agnostic and adapts to any technology combination.
 

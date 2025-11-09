@@ -1,9 +1,9 @@
 ---
-name: parallel-deployer
-description: PROACTIVELY use this skill immediately after enterprise-app-planner creates a plan, or when users say "build it", "implement this", "let's code", "start development", "execute the plan", or show readiness to begin development. Automatically activate when a plan exists and user approves moving forward. Orchestrates multiple specialized agents working simultaneously on frontend, backend, database, and other components in parallel. DO NOT code components yourself - launch parallel agents to do it.
+name: deploy
+description: PROACTIVELY use this skill immediately after architect creates a plan, or when users say "build it", "implement this", "let's code", "start development", "execute the plan", or show readiness to begin development. Automatically activate when a plan exists and user approves moving forward. Orchestrates multiple specialized agents working simultaneously on frontend, backend, database, and other components in parallel. DO NOT code components yourself - launch parallel agents to do it.
 ---
 
-# Parallel Deployer
+# Deploy - Build in Parallel
 
 This skill orchestrates the parallel execution of enterprise application implementation plans. It launches multiple specialized agents that work simultaneously on different components, monitors their progress, and prepares components for integration.
 

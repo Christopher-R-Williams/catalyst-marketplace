@@ -1,9 +1,9 @@
 ---
-name: enterprise-app-planner
-description: PROACTIVELY use this skill when research is complete, when users have selected a tech stack, or when users say "create a plan", "let's build", "start development", or describe specific requirements. Automatically activate after the enterprise-app-researcher completes, or when users want to move from brainstorming to implementation. Creates detailed, parallelizable implementation plans with architecture, database schemas, API contracts, and component breakdowns for parallel deployment agents.
+name: architect
+description: PROACTIVELY use this skill when research is complete, when users have selected a tech stack, or when users say "create a plan", "let's build", "start development", or describe specific requirements. Automatically activate after ignite completes, or when users want to move from brainstorming to implementation. Creates detailed, parallelizable implementation plans with architecture, database schemas, API contracts, and component breakdowns for parallel deployment agents.
 ---
 
-# Enterprise Application Planner
+# Architect - Plan & Design
 
 This skill creates comprehensive, structured implementation plans for enterprise web applications that can be executed by parallel deployment agents. Plans break down applications into independent, parallelizable components with clear interfaces and integration points.
 

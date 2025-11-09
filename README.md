@@ -10,16 +10,16 @@ Catalyst is a comprehensive Claude Code plugin that transforms how you build web
 
 Four powerful skills that work together seamlessly:
 
-1. **🔍 Research** (`enterprise-app-researcher`) - Launch parallel agents to explore tech stack options
-2. **📋 Plan** (`enterprise-app-planner`) - Generate detailed, parallelizable implementation plans
-3. **⚡ Deploy** (`parallel-deployer`) - Build multiple components simultaneously with parallel agents
-4. **🔗 Integrate** (`component-integrator`) - Connect everything into a working application
+1. **🔥 Ignite** (`ignite`) - Launch parallel agents to explore tech stack options
+2. **🏗️ Architect** (`architect`) - Generate detailed, parallelizable implementation plans
+3. **⚡ Deploy** (`deploy`) - Build multiple components simultaneously with parallel agents
+4. **🚀 Ship** (`ship`) - Integrate everything and launch your application
 
 **The Result:** Hours instead of days. A working full-stack application from idea to reality.
 
 ## Skills Included
 
-### 1. enterprise-app-researcher
+### 1. 🔥 Ignite (Research & Discovery)
 
 **Purpose**: Launch parallel research agents to brainstorm and explore technology options.
 
@@ -45,7 +45,7 @@ Claude: Launches 5 parallel research agents:
 Result: Comprehensive comparison with 2-3 recommended complete stack options
 ```
 
-### 2. enterprise-app-planner
+### 2. 🏗️ Architect (Plan & Design)
 
 **Purpose**: Create detailed implementation plans optimized for parallel development.
 
@@ -72,7 +72,7 @@ Claude: Creates a comprehensive plan including:
 Result: Ready-to-execute plan for parallel deployment
 ```
 
-### 3. parallel-deployer
+### 3. ⚡ Deploy (Build in Parallel)
 
 **Purpose**: Execute plans by launching multiple specialized agents working simultaneously.
 
@@ -97,9 +97,9 @@ Claude: Launches 4 agents in a SINGLE message:
 Result: 4 independently working components built simultaneously
 ```
 
-### 4. component-integrator
+### 4. 🚀 Ship (Integrate & Launch)
 
-**Purpose**: Connect independently built components into a cohesive application.
+**Purpose**: Connect independently built components into a cohesive application and ship it.
 
 **Use when**:
 - Parallel deployment is complete
@@ -129,7 +129,7 @@ Result: Complete, working application ready to run
 
 Here's a full workflow from idea to working application:
 
-### Step 1: Research (enterprise-app-researcher)
+### Step 1: Ignite (Research & Discovery)
 ```
 You: "I want to build an e-commerce platform with product catalog, shopping cart,
      and checkout. Research the best tech stacks."
@@ -138,7 +138,7 @@ Claude: Launches parallel research agents to explore options
 → Result: 3 recommended stack combinations with detailed comparisons
 ```
 
-### Step 2: Planning (enterprise-app-planner)
+### Step 2: Architect (Plan & Design)
 ```
 You: "I'll go with React + Node.js + PostgreSQL. Create an implementation plan."
 
@@ -151,7 +151,7 @@ Claude: Creates detailed plan with:
 → Result: Complete implementation plan
 ```
 
-### Step 3: Parallel Development (parallel-deployer)
+### Step 3: Deploy (Build in Parallel)
 ```
 You: "Execute this plan with parallel agents."
 
@@ -165,7 +165,7 @@ Claude: Launches 5 agents in parallel:
 → Result: 5 independently working components
 ```
 
-### Step 4: Integration (component-integrator)
+### Step 4: Ship (Integrate & Launch)
 ```
 You: "Integrate all the components."
 
@@ -264,7 +264,7 @@ Verify Catalyst is installed:
 
 ```bash
 /plugin list        # Should show "catalyst"
-/skills list        # Should show all 4 Catalyst skills
+/skills list        # Should show: ignite, architect, deploy, ship
 ```
 
 ### Updating

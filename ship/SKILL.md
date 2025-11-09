@@ -1,9 +1,9 @@
 ---
-name: component-integrator
-description: PROACTIVELY use this skill immediately after parallel-deployer completes, or when users say "integrate", "connect components", "wire it together", "make it work", or when parallel agents finish building. Automatically activate when components are ready to be connected. Integrates frontend to backend, backend to database, configures authentication, handles CORS, sets up environment variables, and performs end-to-end testing to create a working application.
+name: ship
+description: PROACTIVELY use this skill immediately after deploy completes, or when users say "integrate", "connect components", "wire it together", "make it work", "ship it", or when parallel agents finish building. Automatically activate when components are ready to be connected. Integrates frontend to backend, backend to database, configures authentication, handles CORS, sets up environment variables, and performs end-to-end testing to create a working application ready to ship.
 ---
 
-# Component Integrator
+# Ship - Integrate & Launch
 
 This skill integrates components built by parallel agents into a fully functional enterprise application. It connects the pieces, resolves integration issues, configures the environment, and validates that the complete system works end-to-end.
 

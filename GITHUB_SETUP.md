@@ -24,10 +24,10 @@ This guide will help you publish **Catalyst** as a Claude Code plugin marketplac
 - `.claude-plugin/plugin.json` - Plugin manifest (named "catalyst")
 - `.claude-plugin/marketplace.json` - Marketplace configuration
 - `hooks/start-session.md` - Welcome message when users start a session
-- `enterprise-app-researcher/` - Research skill
-- `enterprise-app-planner/` - Planning skill
-- `parallel-deployer/` - Parallel deployment skill
-- `component-integrator/` - Integration skill
+- `ignite/` - Research & Discovery skill 🔥
+- `architect/` - Plan & Design skill 🏗️
+- `deploy/` - Build in Parallel skill ⚡
+- `ship/` - Integrate & Launch skill 🚀
 
 Each skill directory contains a `SKILL.md` file that Claude Code automatically discovers.
 
@@ -138,10 +138,10 @@ Users can verify installation:
 ```
 
 They should see all 4 skills:
-- `enterprise-app-researcher`
-- `enterprise-app-planner`
-- `parallel-deployer`
-- `component-integrator`
+- `ignite` 🔥 - Research & Discovery
+- `architect` 🏗️ - Plan & Design
+- `deploy` ⚡ - Build in Parallel
+- `ship` 🚀 - Integrate & Launch
 
 ## Publishing Updates
 
