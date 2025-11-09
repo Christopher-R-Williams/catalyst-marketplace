@@ -8,10 +8,7 @@
     "url": "https://github.com/Christopher-R-Williams"
   },
   "homepage": "https://github.com/Christopher-R-Williams/catalyst-marketplace",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Christopher-R-Williams/catalyst-marketplace.git"
-  },
+  "repository": "https://github.com/Christopher-R-Williams/catalyst-marketplace",
   "keywords": [
     "catalyst",
     "rapid-development",
