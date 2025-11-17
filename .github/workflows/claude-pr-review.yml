@@ -44,7 +44,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install anthropic pyyaml
+          pip install anthropic==0.39.0 pyyaml==6.0.1
 
       - name: Run Claude Code Review
         env:
