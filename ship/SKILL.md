@@ -191,11 +191,17 @@ Address system-wide concerns:
 - CSRF protection if using sessions
 - Rate limiting on API endpoints
 - Secure headers (helmet.js)
+- **Run automated security scanning**:
+  - npm audit / yarn audit for dependency vulnerabilities
+  - OWASP dependency checker
+  - CodeQL or Snyk for code analysis
+  - Check for exposed secrets (.env files, API keys)
 
 **Logging**:
-- Structured logging in backend
+- Structured logging in backend (Winston, Pino, Log4j)
 - Console logging for frontend development
-- Error tracking (optional: Sentry, LogRocket)
+- Error tracking (Sentry, Rollbar, LogRocket)
+- Performance monitoring (optional)
 
 ### Step 8: Development Environment Setup
 
@@ -234,26 +240,60 @@ services:
 - How to run development server
 - How to run tests
 
-### Step 9: End-to-End Testing
+### Step 9: Comprehensive Testing
 
-Validate the integrated system:
+Validate the integrated system with automated and manual testing:
 
-**Manual Testing**:
-- Test critical user flows from start to finish
-- Register new user -> Login -> Main features -> Logout
-- Test error cases (invalid input, network failures)
-- Verify data persists correctly
+**Automated E2E Testing** (Recommended):
+- Setup Playwright or Cypress for frontend E2E tests
+- Test critical user flows:
+  - User registration and login
+  - Create/Read/Update/Delete operations
+  - Authentication-protected routes
+  - Form validation and error states
+- Generate test coverage reports
+- Setup CI/CD to run tests automatically
 
-**Automated Testing** (if time permits):
-- Integration tests for API endpoints
-- E2E tests for critical flows (Playwright, Cypress)
-- Test authentication flow
-- Test data validation
+**API Integration Testing**:
+- Test all API endpoints with real database
+- Verify request/response formats match OpenAPI spec
+- Test authentication and authorization
+- Test error handling (4xx, 5xx responses)
+- Test data validation and sanitization
+- Use tools: Supertest, REST Client, Postman/Newman
+
+**Unit Testing**:
+- Frontend: Component tests (React Testing Library, Vue Test Utils)
+- Backend: Service and controller tests (Jest, Mocha)
+- Database: Model and migration tests
+- Aim for >80% code coverage
 
 **Performance Testing**:
-- Check API response times
-- Verify frontend load times
+- Load testing with k6, Artillery, or Apache JMeter
+- Test API response times under load
+- Verify frontend load times (Lighthouse, WebPageTest)
 - Test with realistic data volumes
+- Database query performance analysis
+
+**Security Testing**:
+- OWASP Top 10 vulnerability checks
+- SQL injection testing
+- XSS testing
+- CSRF testing
+- Authentication/authorization bypass attempts
+- Dependency vulnerability scanning
+
+**Accessibility Testing**:
+- WCAG 2.1 compliance checks
+- Screen reader testing
+- Keyboard navigation testing
+- Color contrast validation
+- Use tools: axe-core, Pa11y, Lighthouse
+
+**Cross-Browser Testing**:
+- Test on Chrome, Firefox, Safari, Edge
+- Mobile responsive testing
+- Different screen sizes and resolutions
 
 ### Step 10: Fix Integration Issues
 

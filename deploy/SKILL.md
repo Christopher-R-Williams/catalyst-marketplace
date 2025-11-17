@@ -118,6 +118,30 @@ While agents work:
 - **Identify blockers**: Watch for agents that get stuck or encounter errors
 - **Check contract adherence**: Ensure agents are following the defined interfaces
 - **Prepare for integration**: Collect outputs from completed agents
+- **Quality checks**: Monitor code quality, test coverage, and best practices
+- **Security scanning**: Check for common vulnerabilities
+- **Performance metrics**: Track build times and bundle sizes
+
+Create a progress tracking table:
+
+```markdown
+## Parallel Agent Progress
+
+| Agent | Component | Status | Progress | Tests | Quality | Issues |
+|-------|-----------|--------|----------|-------|---------|--------|
+| 1 | Frontend | ✅ Complete | 100% | 45/45 ✅ | A+ | 0 |
+| 2 | Backend API | 🔄 In Progress | 75% | 32/40 | A | 0 |
+| 3 | Database | ✅ Complete | 100% | 10/10 ✅ | A+ | 0 |
+| 4 | Auth Service | ⏳ Pending | 0% | 0/15 | - | 0 |
+```
+
+**Automated Quality Checks:**
+- ✅ Code linting (ESLint, Prettier)
+- ✅ Type checking (TypeScript strict mode)
+- ✅ Unit test coverage (>80% target)
+- ✅ Security scan (dependency vulnerabilities)
+- ✅ Bundle size analysis
+- ✅ Code complexity metrics
 
 Do NOT intervene unless an agent is clearly blocked or violating contracts.
 
@@ -139,6 +163,17 @@ Before integration, verify each component follows the contracts:
 - **Database schema**: Does it match the plan?
 - **Data formats**: Do request/response bodies match?
 - **Configuration**: Are environment variables consistent?
+- **Security standards**: Input validation, authentication, authorization
+- **Code quality**: Linting passes, tests pass, no critical issues
+- **Performance**: Meets performance targets (response time, bundle size)
+
+**Automated Validation Tools:**
+- OpenAPI validator for API contract compliance
+- Database schema comparison tools
+- TypeScript compiler for type safety
+- ESLint/Prettier for code style
+- Jest/Vitest for test validation
+- OWASP dependency checker for security
 
 If contracts are violated, identify the discrepancies and either fix them or update dependent components.
 

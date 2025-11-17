@@ -1,7 +1,7 @@
 # Catalyst ⚡
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/Christopher-R-Williams/catalyst-marketplace/releases)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/Christopher-R-Williams/catalyst-marketplace/releases)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-purple.svg)](https://github.com/Christopher-R-Williams/catalyst-marketplace)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Christopher-R-Williams/catalyst-marketplace/blob/main/CONTRIBUTING.md)
 
@@ -9,18 +9,24 @@
 
 ## What is Catalyst?
 
-Catalyst is a comprehensive Claude Code plugin that transforms how you build web applications. Instead of building sequentially, Catalyst orchestrates **parallel agents** that research, plan, and build simultaneously - dramatically accelerating development from idea to working application.
+Catalyst is a comprehensive Claude Code plugin that transforms how you build web applications. Instead of building sequentially, Catalyst orchestrates **parallel agents** that research, plan, and build simultaneously - dramatically accelerating development from idea to production-ready application.
 
 ## The Catalyst Workflow
 
-Four powerful skills that work together seamlessly:
+Seven powerful skills that work together seamlessly:
 
-1. **🔥 Ignite** (`ignite`) - Launch parallel agents to explore tech stack options
-2. **🏗️ Architect** (`architect`) - Generate detailed, parallelizable implementation plans
-3. **⚡ Deploy** (`deploy`) - Build multiple components simultaneously with parallel agents
-4. **🚀 Ship** (`ship`) - Integrate everything and launch your application
+### Core Workflow
+1. **🔥 Ignite** (`ignite`) - Research tech stacks with parallel agents, cost analysis, and security assessment
+2. **🏗️ Architect** (`architect`) - Generate detailed plans with Mermaid diagrams and OpenAPI specs
+3. **⚡ Deploy** (`deploy`) - Build multiple components simultaneously with quality checks
+4. **🚀 Ship** (`ship`) - Integrate everything with comprehensive testing and security scanning
 
-**The Result:** Hours instead of days. A working full-stack application from idea to reality.
+### Production Readiness
+5. **📊 Monitor** (`monitor`) - Setup logging, error tracking, and observability infrastructure
+6. **🔒 Secure** (`secure`) - Perform security audits, vulnerability scanning, and OWASP compliance
+7. **✅ Test** (`test`) - Generate comprehensive tests with >80% coverage and automation
+
+**The Result:** Production-ready applications in hours, not days. From idea to fully tested, secure, monitored deployment.
 
 ## Skills Included
 
