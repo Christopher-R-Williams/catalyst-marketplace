@@ -1,0 +1,33 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="sparkGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FCD34D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#bgGradient)"/>
+
+  <!-- Lightning bolt (catalyst symbol) -->
+  <path d="M 72 20 L 48 64 L 60 64 L 52 108 L 80 60 L 68 60 Z"
+        fill="url(#sparkGradient)"
+        stroke="#FBBF24"
+        stroke-width="2"
+        stroke-linejoin="round"/>
+
+  <!-- Four dots representing the 4 skills working in parallel -->
+  <circle cx="30" cy="45" r="5" fill="#A78BFA" opacity="0.9"/>
+  <circle cx="98" cy="45" r="5" fill="#A78BFA" opacity="0.9"/>
+  <circle cx="30" cy="83" r="5" fill="#A78BFA" opacity="0.9"/>
+  <circle cx="98" cy="83" r="5" fill="#A78BFA" opacity="0.9"/>
+
+  <!-- Connection lines (parallel workflow) -->
+  <line x1="35" y1="45" x2="93" y2="45" stroke="#C4B5FD" stroke-width="2" opacity="0.6"/>
+  <line x1="35" y1="83" x2="93" y2="83" stroke="#C4B5FD" stroke-width="2" opacity="0.6"/>
+</svg>

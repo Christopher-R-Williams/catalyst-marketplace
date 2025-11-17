@@ -1,0 +1,160 @@
+# Docker Compose for Production
+# Optimized builds with health checks and restart policies
+
+version: '3.8'
+
+services:
+  # Frontend (Static served by nginx)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - app-network
+    # For SSL certificates (uncomment if using Let's Encrypt)
+    # volumes:
+    #   - ./certs:/etc/nginx/certs:ro
+    #   - ./nginx-conf:/etc/nginx/conf.d
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/myapp_prod
+      - JWT_SECRET=${JWT_SECRET}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+      - CORS_ORIGIN=${FRONTEND_URL}
+      - SENDGRID_API_KEY=${SENDGRID_API_KEY}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 20s
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # MongoDB Database (Production)
+  mongodb:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_prod_data:/data/db
+      - ./mongodb-backup:/backup
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=myapp_prod
+    restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - app-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+
+  # Redis (Production - for caching/sessions)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_prod_data:/data
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - app-network
+
+  # Backup service (runs daily at 2 AM)
+  backup:
+    image: mongo:7
+    volumes:
+      - mongodb_prod_data:/data/db:ro
+      - ./mongodb-backup:/backup
+    environment:
+      - MONGO_URI=mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb:27017
+    command: >
+      sh -c "
+        while true; do
+          sleep 86400;
+          mongodump --uri=$$MONGO_URI --out=/backup/dump-$$(date +%Y%m%d-%H%M%S);
+          find /backup -type d -mtime +7 -exec rm -rf {} +;
+        done
+      "
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+volumes:
+  mongodb_prod_data:
+  redis_prod_data:
+
+networks:
+  app-network:
+    driver: bridge
+
+# Usage:
+# Production deployment:
+# docker-compose -f docker-compose.prod.yml up -d
+
+# View logs:
+# docker-compose -f docker-compose.prod.yml logs -f
+
+# Scale backend:
+# docker-compose -f docker-compose.prod.yml up -d --scale backend=3
+
+# Stop:
+# docker-compose -f docker-compose.prod.yml down
+
+# Backup manually:
+# docker-compose -f docker-compose.prod.yml exec mongodb mongodump --out=/backup/manual-backup

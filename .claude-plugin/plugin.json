@@ -11,6 +11,7 @@
   "repository": "https://github.com/Christopher-R-Williams/catalyst-marketplace",
   "bugs": "https://github.com/Christopher-R-Williams/catalyst-marketplace/issues",
   "license": "MIT",
+  "icon": "./icon.svg",
   "keywords": [
     "catalyst",
     "rapid-development",

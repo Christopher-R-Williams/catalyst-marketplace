@@ -1,0 +1,94 @@
+# Docker Compose for Development
+# Hot reloading enabled for frontend and backend
+
+version: '3.8'
+
+services:
+  # Frontend (React/Vue/Angular with Vite)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:3001/api
+      - VITE_STRIPE_PUBLISHABLE_KEY=${VITE_STRIPE_PUBLISHABLE_KEY}
+    command: npm run dev
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  # Backend (Node.js/Express)
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGODB_URI=mongodb://mongodb:27017/myapp
+      - JWT_SECRET=${JWT_SECRET}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - CORS_ORIGIN=http://localhost:5173
+    command: npm run dev
+    depends_on:
+      - mongodb
+    networks:
+      - app-network
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./backend/scripts/seed.js:/docker-entrypoint-initdb.d/seed.js
+    environment:
+      - MONGO_INITDB_DATABASE=myapp
+    networks:
+      - app-network
+
+  # Redis (optional - for caching/sessions)
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - app-network
+
+  # Adminer (Database GUI)
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=mongodb
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  app-network:
+    driver: bridge
+
+# Usage:
+# docker-compose -f docker-compose.dev.yml up
+# docker-compose -f docker-compose.dev.yml down
+# docker-compose -f docker-compose.dev.yml logs -f backend

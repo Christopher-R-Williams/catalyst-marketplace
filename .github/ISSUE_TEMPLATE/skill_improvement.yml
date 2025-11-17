@@ -1,0 +1,140 @@
+name: Skill Improvement
+description: Suggest improvements to existing skills (ignite, architect, deploy, ship)
+title: "[SKILL]: "
+labels: ["skill-improvement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Catalyst skills! Your feedback helps make the workflow better.
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill needs improvement?
+      description: Select the skill you want to improve
+      options:
+        - Ignite (Research & Discovery)
+        - Architect (Planning & Design)
+        - Deploy (Parallel Build)
+        - Ship (Integration & Launch)
+        - All Skills (Cross-cutting)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: improvement-type
+    attributes:
+      label: Type of Improvement
+      description: What aspect needs improvement?
+      options:
+        - Output Quality (Better results)
+        - Instructions (Clearer guidance)
+        - Examples (More/better examples)
+        - Best Practices (Add recommendations)
+        - Error Handling (Better error messages)
+        - Proactive Triggers (Activation keywords)
+        - Integration (Better workflow between skills)
+        - Performance (Faster execution)
+        - Stack Support (Add new tech stack)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current Behavior
+      description: How does the skill currently work?
+      placeholder: |
+        Currently, when I use [skill], it...
+        The output looks like...
+        The process is...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      description: How should the skill be improved?
+      placeholder: |
+        The skill should instead...
+        The output could be improved by...
+        Add these instructions...
+    validations:
+      required: true
+
+  - type: textarea
+    id: example
+    attributes:
+      label: Example Scenario
+      description: Provide a concrete example of when this improvement would help
+      placeholder: |
+        Example:
+        1. User wants to build a [type of app]
+        2. Currently the skill produces [output]
+        3. With this improvement, it would produce [better output]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Expected Impact
+      description: How much would this improve the skill?
+      options:
+        - Major - Significantly enhances skill usefulness
+        - Moderate - Noticeably improves skill quality
+        - Minor - Small but valuable improvement
+    validations:
+      required: true
+
+  - type: textarea
+    id: documentation
+    attributes:
+      label: Documentation Changes
+      description: What documentation should be updated?
+      placeholder: |
+        - Update SKILL.md to include...
+        - Add example in examples/ directory
+        - Update README.md section on...
+
+  - type: textarea
+    id: backward-compatibility
+    attributes:
+      label: Backward Compatibility
+      description: Would this change affect existing users?
+      placeholder: "This change is/is not backward compatible because..."
+
+  - type: textarea
+    id: testing
+    attributes:
+      label: How to Test
+      description: How can we verify this improvement works?
+      placeholder: |
+        1. Test with project type...
+        2. Verify output includes...
+        3. Check that...
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other relevant information
+      placeholder: "Related issues, screenshots, links to discussions..."
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following
+      options:
+        - label: I have tested the current skill behavior
+          required: true
+        - label: I have searched existing issues for similar improvements
+          required: true
+        - label: I have reviewed the skill documentation (SKILL.md)
+          required: true
+        - label: I would be willing to help implement this improvement
+          required: false

@@ -1,0 +1,64 @@
+# Node.js + Express Production Dockerfile
+
+FROM node:18-alpine AS base
+
+# Stage 1: Dependencies
+FROM base AS deps
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json* ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Stage 2: Build (if TypeScript or build step needed)
+FROM base AS build
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Copy source files
+COPY . .
+
+# Build TypeScript if needed
+# RUN npm run build
+
+# Stage 3: Production
+FROM base AS production
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3001
+
+# Create non-root user
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 expressuser
+
+# Copy dependencies and built files
+COPY --from=deps --chown=expressuser:nodejs /app/node_modules ./node_modules
+COPY --from=build --chown=expressuser:nodejs /app/src ./src
+# If using TypeScript build:
+# COPY --from=build --chown=expressuser:nodejs /app/dist ./dist
+
+# Copy package.json for reference
+COPY --chown=expressuser:nodejs package.json ./
+
+# Switch to non-root user
+USER expressuser
+
+EXPOSE 3001
+
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+  CMD node -e "require('http').get('http://localhost:3001/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
+
+# Start application
+CMD ["node", "src/server.js"]
+# If using TypeScript build:
+# CMD ["node", "dist/server.js"]
+
+# Build command:
+# docker build -f Dockerfile.express -t my-express-api .
+
+# Run command:
+# docker run -p 3001:3001 -e DATABASE_URL=mongodb://... my-express-api

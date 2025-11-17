@@ -1,0 +1,116 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for Catalyst
+title: "[FEATURE]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please provide as much detail as possible.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Feature Category
+      description: Which area does this feature relate to?
+      options:
+        - New Skill
+        - Skill Enhancement (Ignite)
+        - Skill Enhancement (Architect)
+        - Skill Enhancement (Deploy)
+        - Skill Enhancement (Ship)
+        - New Template
+        - New Example
+        - Documentation
+        - Developer Experience
+        - Performance
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve?
+      placeholder: "I'm frustrated when... / It would be helpful if..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe your proposed solution in detail
+      placeholder: "I suggest adding... / The skill should..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Have you considered any alternative solutions or workarounds?
+      placeholder: "Alternatively, we could..."
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe a specific scenario where this feature would be useful
+      placeholder: |
+        Example:
+        1. User wants to build a...
+        2. Currently they have to...
+        3. With this feature, they could...
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Expected Impact
+      description: How many users would benefit from this?
+      options:
+        - High - Would benefit most users
+        - Medium - Would benefit many users
+        - Low - Would benefit a specific use case
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Critical - Blocking my work
+        - High - Would significantly improve my workflow
+        - Medium - Nice to have
+        - Low - Just an idea
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples or References
+      description: Links to similar features, screenshots, mockups, or code examples
+      placeholder: "Similar to... / See example at..."
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other information about the feature request
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues and discussions for similar requests
+          required: true
+        - label: This is a single feature request (not multiple unrelated features)
+          required: true
+        - label: I would be willing to contribute this feature
+          required: false
