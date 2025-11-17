@@ -79,6 +79,55 @@ const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$
 - ✅ Double-submit cookies
 - ✅ Custom headers for AJAX requests
 
+### CSRF Token Implementation (Express)
+
+```javascript
+const csrf = require('csurf');
+const cookieParser = require('cookie-parser');
+
+// Setup
+app.use(cookieParser());
+const csrfProtection = csrf({ cookie: true });
+
+// Add to forms
+app.get('/form', csrfProtection, (req, res) => {
+  res.render('form', { csrfToken: req.csrfToken() });
+});
+
+// Validate on submission
+app.post('/form', csrfProtection, (req, res) => {
+  // CSRF token automatically validated
+  // Process form data
+});
+
+// In HTML template
+<input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+// For AJAX requests
+fetch('/api/data', {
+  method: 'POST',
+  headers: {
+    'CSRF-Token': csrfToken, // Get from meta tag or cookie
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+});
+```
+
+### SameSite Cookie Configuration
+
+```javascript
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: true, // HTTPS only
+    sameSite: 'strict', // or 'lax'
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+  },
+}));
+```
+
 ## API Security
 
 - ✅ Use HTTPS only

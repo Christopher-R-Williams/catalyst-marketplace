@@ -4,11 +4,18 @@ Thank you for your interest in contributing to **Catalyst**! This guide will hel
 
 ## Overview
 
-This repository contains the **Catalyst** plugin with four interconnected Claude skills for rapid full-stack development:
+This repository contains the **Catalyst** plugin with seven interconnected Claude skills for rapid full-stack development:
+
+**Core Workflow:**
 - `ignite` 🔥 - Research & Discovery
 - `architect` 🏗️ - Plan & Design
 - `deploy` ⚡ - Build in Parallel
 - `ship` 🚀 - Integrate & Launch
+
+**Production Readiness:**
+- `monitor` 📊 - Logging & Observability
+- `secure` 🔒 - Security Auditing
+- `test` ✅ - Comprehensive Testing
 
 ## Development Workflow
 

@@ -16,6 +16,84 @@ const REFRESH_TOKEN_EXPIRES_IN = '7d';
 const BCRYPT_ROUNDS = 12;
 
 // ============================================================================
+// Startup Validation
+// ============================================================================
+
+/**
+ * Validate required environment variables at startup
+ * Call this before starting your server
+ */
+function validateAuthConfig() {
+  if (!JWT_SECRET) {
+    throw new Error(
+      'JWT_SECRET environment variable is required. ' +
+      'Please set it in your .env file or environment.'
+    );
+  }
+
+  if (JWT_SECRET.length < 32) {
+    console.warn(
+      '⚠️  WARNING: JWT_SECRET should be at least 32 characters for security. ' +
+      'Current length: ' + JWT_SECRET.length
+    );
+  }
+
+  console.log('✓ Authentication configuration validated');
+}
+
+// Export for use in app startup
+module.exports.validateAuthConfig = validateAuthConfig;
+
+// ============================================================================
+// Rate Limiting Middleware
+// ============================================================================
+
+const rateLimit = require('express-rate-limit');
+
+/**
+ * Rate limiter for login attempts
+ * Prevents brute force attacks
+ */
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // 5 attempts per window
+  message: {
+    error: 'Too many login attempts. Please try again in 15 minutes.',
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+  // Skip successful requests
+  skipSuccessfulRequests: true,
+});
+
+/**
+ * Rate limiter for registration
+ * Prevents automated account creation
+ */
+const registerLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 3, // 3 registrations per hour per IP
+  message: {
+    error: 'Too many accounts created. Please try again later.',
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+/**
+ * General API rate limiter
+ */
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // 100 requests per window
+  message: {
+    error: 'Too many requests. Please try again later.',
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// ============================================================================
 // Helper Functions
 // ============================================================================
 
@@ -121,7 +199,7 @@ function requireRole(...roles) {
  * POST /auth/register
  * Register a new user
  */
-router.post('/register', async (req, res) => {
+router.post('/register', registerLimiter, async (req, res) => {
   try {
     const { email, password, name } = req.body;
 
@@ -186,7 +264,7 @@ router.post('/register', async (req, res) => {
  * POST /auth/login
  * Login with email and password
  */
-router.post('/login', async (req, res) => {
+router.post('/login', loginLimiter, async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -356,4 +434,9 @@ module.exports = {
   comparePassword,
   generateAccessToken,
   generateRefreshToken,
+  validateAuthConfig, // Add this to app startup!
+  // Rate limiters
+  loginLimiter,
+  registerLimiter,
+  apiLimiter,
 };
