@@ -69,8 +69,15 @@ Design the high-level architecture:
 - **API contracts**: Endpoints, request/response formats, authentication
 - **Database schema**: Tables, relationships, indexes
 - **External integrations**: Third-party APIs, authentication providers, file storage
+- **Security architecture**: Authentication flows, authorization patterns, data encryption
+- **Scalability considerations**: Load balancing, caching, database optimization
+- **Observability**: Logging, monitoring, tracing infrastructure
 
-Document the architecture in a clear, visual format (use markdown diagrams when possible).
+Document the architecture in a clear, visual format using **Mermaid diagrams** for:
+- System architecture diagrams
+- Data flow diagrams
+- Authentication flow diagrams
+- Database entity relationships
 
 ### Step 3: Break Down Into Parallel Components
 
@@ -97,6 +104,13 @@ For each component interface, specify:
 - **Database schema**: Table definitions, relationships, constraints
 - **Event schemas**: If using event-driven architecture
 - **Configuration**: Environment variables, secrets, feature flags
+
+**Generate OpenAPI 3.0 specifications** for all REST APIs to ensure:
+- Precise contract definitions
+- Auto-generated documentation
+- Client SDK generation capability
+- API testing automation
+- Contract validation
 
 These contracts are critical because parallel agents need to agree on interfaces before implementation.
 
@@ -140,10 +154,42 @@ Present the plan in a structured format that the parallel-deployer skill can exe
 - **Tech Stack**: [Frontend, Backend, Database, Infrastructure]
 - **Architecture**: [Monolith/Microservices/etc.]
 - **Timeline Estimate**: [e.g., 2-3 weeks with 2 developers]
+- **Estimated Cost**: $X/month infrastructure, $Y development
 
 ## Architecture Diagram
 
-[Use markdown/ASCII to show component relationships]
+Use **Mermaid** diagrams for clear visualization:
+
+\`\`\`mermaid
+graph TB
+    Client[Web Client]
+    API[API Server]
+    DB[(Database)]
+    Cache[(Redis Cache)]
+    Storage[Object Storage]
+
+    Client -->|HTTPS| API
+    API -->|Query| DB
+    API -->|Cache| Cache
+    API -->|Upload/Download| Storage
+\`\`\`
+
+### Data Flow Diagram
+
+\`\`\`mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API
+    participant DB
+
+    User->>Frontend: Login
+    Frontend->>API: POST /auth/login
+    API->>DB: Verify credentials
+    DB-->>API: User data
+    API-->>Frontend: JWT token
+    Frontend-->>User: Dashboard
+\`\`\`
 
 ## Database Schema
 
@@ -151,14 +197,63 @@ Present the plan in a structured format that the parallel-deployer skill can exe
 
 ## API Contracts
 
+### OpenAPI 3.0 Specification
+
+Generate a complete OpenAPI spec (see `/templates/api-contracts/openapi-template.yaml`):
+
+\`\`\`yaml
+openapi: 3.0.0
+info:
+  title: [Project Name] API
+  version: 1.0.0
+paths:
+  /api/users:
+    get:
+      summary: Get all users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+\`\`\`
+
 ### Endpoint: [Name]
 - **Method**: GET/POST/PUT/DELETE
 - **Path**: /api/...
 - **Auth**: Required/Optional
 - **Request**: {...}
 - **Response**: {...}
+- **Validation**: Input rules
+- **Rate Limit**: X requests per minute
 
 [Repeat for all endpoints]
+
+### Security Architecture
+
+\`\`\`mermaid
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant API
+    participant AuthService
+    participant DB
+
+    User->>Frontend: Login request
+    Frontend->>API: POST /auth/login
+    API->>AuthService: Validate credentials
+    AuthService->>DB: Query user
+    DB-->>AuthService: User data
+    AuthService->>AuthService: Generate JWT
+    AuthService-->>API: JWT + Refresh token
+    API-->>Frontend: Tokens
+    Frontend->>Frontend: Store tokens
+\`\`\`
 
 ## Component Breakdown
 
