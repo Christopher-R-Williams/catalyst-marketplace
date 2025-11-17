@@ -68,10 +68,10 @@ def create_review_prompt(changed_files: list[str], file_contents: dict) -> str:
 This repository contains Claude skills for enterprise web application development with parallel agent workflows.
 
 # Skills in this repository:
-1. **enterprise-app-researcher** - Launches parallel research agents to explore tech stacks
-2. **enterprise-app-planner** - Creates detailed implementation plans for parallel development
-3. **parallel-deployer** - Orchestrates multiple agents building components simultaneously
-4. **component-integrator** - Integrates components into a working application
+1. **ignite** - Launches parallel research agents to explore tech stacks
+2. **architect** - Creates detailed implementation plans for parallel development
+3. **deploy** - Orchestrates multiple agents building components simultaneously
+4. **ship** - Integrates components into a working application
 
 # Review Guidelines:
 
@@ -150,23 +150,46 @@ Be thorough, constructive, and specific. Focus on quality, accuracy, and consist
 
 
 def get_claude_review(prompt: str, api_key: str) -> str:
-    """Get review from Claude API."""
-    try:
-        client = anthropic.Anthropic(api_key=api_key)
+    """Get review from Claude API with retry logic."""
+    import time
 
-        message = client.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=4096,
-            messages=[{
-                "role": "user",
-                "content": prompt
-            }]
-        )
+    max_retries = 3
+    retry_delay = 2  # seconds
 
-        return message.content[0].text
+    for attempt in range(max_retries):
+        try:
+            client = anthropic.Anthropic(api_key=api_key)
 
-    except Exception as e:
-        return f"Error getting Claude review: {e}"
+            message = client.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=4096,
+                messages=[{
+                    "role": "user",
+                    "content": prompt
+                }]
+            )
+
+            return message.content[0].text
+
+        except anthropic.APIConnectionError as e:
+            print(f"⚠️  Network error (attempt {attempt + 1}/{max_retries}): {e}")
+            if attempt < max_retries - 1:
+                print(f"   Retrying in {retry_delay} seconds...")
+                time.sleep(retry_delay)
+                retry_delay *= 2  # Exponential backoff
+            else:
+                return f"❌ Error: Could not connect to Claude API after {max_retries} attempts. Please check your network connection."
+
+        except anthropic.RateLimitError as e:
+            return f"❌ Error: Rate limit exceeded. Please try again later or upgrade your API plan."
+
+        except anthropic.AuthenticationError as e:
+            return f"❌ Error: Invalid API key. Please check your ANTHROPIC_API_KEY secret."
+
+        except Exception as e:
+            return f"❌ Error getting Claude review: {e}"
+
+    return "❌ Error: Failed to get review after retries."
 
 
 def main():
@@ -177,10 +200,14 @@ def main():
 
     args = parser.parse_args()
 
-    # Get API key from environment
+    # Get API key from environment (check early)
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
-        print("Error: ANTHROPIC_API_KEY environment variable not set")
+        print("❌ Error: ANTHROPIC_API_KEY environment variable not set")
+        print("💡 Please add it to GitHub Secrets:")
+        print("   Settings → Secrets and variables → Actions → New repository secret")
+        print("   Name: ANTHROPIC_API_KEY")
+        print("   Value: Your Anthropic API key from https://console.anthropic.com/")
         sys.exit(1)
 
     # Parse changed files

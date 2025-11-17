@@ -1,0 +1,54 @@
+{
+  "name": "catalyst-marketplace",
+  "version": "1.0.0",
+  "description": "Catalyst - Build enterprise web apps 10x faster with parallel agent workflows",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "python .github/hooks/validate-skills.py",
+    "validate:bash": "bash .github/hooks/validate-skills.sh",
+    "test": "npm run validate",
+    "lint": "echo 'Linting markdown files...' && markdownlint '**/*.md' --ignore node_modules",
+    "format": "prettier --write '**/*.{json,yaml,yml,md}'",
+    "format:check": "prettier --check '**/*.{json,yaml,yml,md}'",
+    "prepare": "echo 'Setup git hooks...' && git config core.hooksPath .github/hooks || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Christopher-R-Williams/catalyst-marketplace.git"
+  },
+  "keywords": [
+    "catalyst",
+    "claude-code",
+    "claude-plugin",
+    "skills",
+    "rapid-development",
+    "parallel-agents",
+    "fullstack",
+    "web-development",
+    "enterprise",
+    "workflow",
+    "automation",
+    "agent-orchestration",
+    "parallel-execution",
+    "architecture-planning",
+    "code-generation"
+  ],
+  "author": {
+    "name": "Christopher Williams",
+    "url": "https://github.com/Christopher-R-Williams"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Christopher-R-Williams/catalyst-marketplace/issues"
+  },
+  "homepage": "https://github.com/Christopher-R-Williams/catalyst-marketplace#readme",
+  "devDependencies": {
+    "markdownlint-cli": "^0.39.0",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

@@ -9,6 +9,8 @@
   },
   "homepage": "https://github.com/Christopher-R-Williams/catalyst-marketplace",
   "repository": "https://github.com/Christopher-R-Williams/catalyst-marketplace",
+  "bugs": "https://github.com/Christopher-R-Williams/catalyst-marketplace/issues",
+  "license": "MIT",
   "keywords": [
     "catalyst",
     "rapid-development",
@@ -19,7 +21,15 @@
     "nodejs",
     "enterprise",
     "workflow",
-    "automation"
+    "automation",
+    "agent-orchestration",
+    "multi-skill",
+    "parallel-execution",
+    "architecture-planning",
+    "code-generation",
+    "research-automation",
+    "deployment-automation",
+    "integration"
   ],
   "skills": ["./ignite", "./architect", "./deploy", "./ship"],
   "hooks": ["./hooks"]

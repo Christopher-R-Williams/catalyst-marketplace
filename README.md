@@ -1,5 +1,10 @@
 # Catalyst ⚡
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/Christopher-R-Williams/catalyst-marketplace/releases)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-purple.svg)](https://github.com/Christopher-R-Williams/catalyst-marketplace)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Christopher-R-Williams/catalyst-marketplace/blob/main/CONTRIBUTING.md)
+
 **Build enterprise web apps 10x faster.** A catalyst for rapid full-stack development using parallel agent workflows.
 
 ## What is Catalyst?
@@ -210,7 +215,7 @@ One command to install Catalyst:
 
 ```bash
 # In Claude Code (VS Code):
-/plugin install Christopher-R-Williams/catalyst-marketplace
+/plugin install catalyst
 ```
 
 That's it! Catalyst is now active and ready to accelerate your development. ⚡
@@ -238,7 +243,7 @@ Add to your `settings.json`:
 ```json
 {
   "claude.plugins": [
-    "Christopher-R-Williams/catalyst-marketplace"
+    "catalyst"
   ]
 }
 ```
